@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 # Parse commandline options #
 if [ "$1" ==  "--AMPM" ]; then
@@ -10,6 +10,7 @@ fi
 # Print time #
 while true
 do
+    printf "\033c"
     date +$options
     sleep 1
 done
