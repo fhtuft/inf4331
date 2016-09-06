@@ -1,0 +1,6 @@
+test output from clock.sh (And yes the sceer in cleared..):
+10:49:54 PM
+^C
+22:51:11
+^C
+
