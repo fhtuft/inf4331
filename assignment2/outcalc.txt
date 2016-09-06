@@ -1,0 +1,17 @@
+Test output from calc.sh:
+
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh P 1 1 1
+1
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh P 1 1 1 2
+2
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh P 1 1 1 2 0
+0
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh m 1 1 1 2 0
+0
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh m 1 1 1 2 0 -1
+-1
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh M 1 1 1 2 0 -1
+2
+fhtuft@helios ~/inf3331/INF3331-fhtuft/assignment2 $ ./calc.sh S 1 1 1 2 0 -1 34
+38
+

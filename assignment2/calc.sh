@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # Check that some arguments are given #
 if(($# < 1)) 
@@ -13,7 +13,7 @@ fi
 case $1 in
 # Sum #
 S)
-    echo "S!"
+    #echo "S!"
     shift
     if (( $# <= 1 ))
     then
@@ -31,7 +31,7 @@ S)
     ;;
 # Product #
 P)
-    echo "P!"
+    #echo "P!"
     shift
       if (( $# <= 1 ))
     then
@@ -48,7 +48,7 @@ P)
     ;;
 # Max #
 M)
-    echo "M!"
+    #echo "M!"
     shift
     if (( $# < 1 ))
     then
@@ -68,7 +68,7 @@ M)
     ;;
 # Min #
 m)
-    echo "m!"
+    #echo "m!"
     shift
     if (( $# < 1 ))
     then
