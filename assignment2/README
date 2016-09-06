@@ -1,0 +1,10 @@
+Alt virker, kjøres som beskrevet i oppgave teksen.
+Oppgave 2.3 bruker grep og wget. Virker på min maskin, men ingen garanti at ruter gir samme webside til annen useragent/ip/etc.., eller om de finner på å oppdatere siden etc.. 
+
+Files:
+calc.sh        (Oppgave 2.1)
+cloch.sh       (Oppgave 2.2)
+subway.sh      (Oppgave 2.3)
+outcalc.txt    (Test output from 2.1)
+outclock.txt   (Test output from 2.2)
+outSubway.txt  (Test output from 2.3)
