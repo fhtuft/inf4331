@@ -1,4 +1,8 @@
 #!/bin/bash  
+# gets a page with wget (uses ruter.no with se avgange i sandtid, station name entered in fild, Nydalen or Blinders), uses grep to get line with info
+#For east and west, uses parameter expansion to get the line after or before "Retning Sognsvann" 
+#Thene uses grep with display text mode(not line) to grap departureTime:[digit][digit]:[digit][digit], uses new grep to extract only the time
+
 
 if(( $# > 0))
 then
