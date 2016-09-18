@@ -5,8 +5,11 @@ import fileinput
 assert sys.version_info >= (3,0)
 wordcount = 0
  
-for line in fileinput.input():
-    wordcount += len(line.split())
+try:
+    for line in fileinput.input():
+        wordcount += len(line.split())
+except IsADirectoryError as e:
+    pass
 
 print(wordcount) 
     
