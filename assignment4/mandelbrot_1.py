@@ -17,12 +17,13 @@ def compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time=1000,plot_filen
     xes = np.linspace(xmin,xmax,Nx) # x'es
     yes = np.linspace(ymin,ymax,Ny) # y 'es
     
-    print(xes)
 
     for j in range(image.shape[0]):
         for i in range(image.shape[1]):
             a,b = (0.0,0.0)
             x,y = (xes[i],yes[j])
+            #x,y = ( -1 + 4.0*float(i-Nx/2)/Nx,0 + 4.0*float(j-Ny/2)/Ny)
+            #print(x,y)
             while(a**2 + b**2 <= 4.0 and  image[j][i] < max_escape_time):
                 a,b = a**2 - b**2 + x, 2*a*b + y
                 image[j][i] += 1
@@ -32,10 +33,11 @@ def compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time=1000,plot_filen
 
     return image
 
-xmin,xmax,ymin,ymax,Nx,Ny = (0.0,200.0,0.0,200.0,50,50)
 
+if __name__ == "__main__":
 
-image = compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,plot_filename='test.txt')
+    xmin,xmax,ymin,ymax,Nx,Ny = (-5.0,3.0,-4.0,4.0,300,300)
+    image = compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time = 100,plot_filename='test.txt')
 
-pylab.imshow(image)
-pylab.show()
+    pylab.imshow(image)
+    pylab.show()
