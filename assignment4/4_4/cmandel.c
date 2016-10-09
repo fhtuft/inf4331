@@ -3,13 +3,13 @@
 #include <string.h>
 
 
-void solver(const double xmin,const double xmax,const double ymin, const double ymax, const int Nx,const int Ny,const int max_escape_time,int **matrix) 
+void solver(int *array,int dim,double xmin,double xmax,double ymin,double ymax,int Nx,int Ny,int max_escape_time) 
 {
 
-	int *array = *matrix;
-
-   	 for(int j = 0; j<Ny; j++) {
-        	for(int i = 0; i<Nx; i++) {
+	
+	int i,j;
+   	 for(j = 0; j<Ny; j++) {
+        	for(i = 0; i<Nx; i++) {
             	const int index = j*Nx+i;
             	int time = 0;
             	const double x = i*((xmax-xmin)/Nx);
