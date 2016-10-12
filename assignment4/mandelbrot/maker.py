@@ -2,13 +2,12 @@
 import argparse
 import sys
 import pylab
-sys.path.insert(0, './cython_python')
 
-import serial_python.mandelbrot_1 as serialPy
-import vector_python.mandelbrot_2 as vecPy
-import cython_python.mandelbrot_3 as cyPy
+import serial.mandelbrot_1 as serielPy
+import vector.mandelbrot_2 as vecPy
+import cython.mandelbrot_3 as cyPy
 
-define maker(xim = -1.,xmax = 1., ymin = -1.,ymax = 1.,Nx = 300, Ny = 300, max_escapte_time = 100,filename = None,function = 1): 
+def maker(xim = -1.0,xmax = 1.0 , ymin = -1.0,ymax = 1.0,Nx = 300, Ny = 300, max_escapte_time = 100, filename = None, function = 1): 
 	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
@@ -52,26 +51,25 @@ define maker(xim = -1.,xmax = 1., ymin = -1.,ymax = 1.,Nx = 300, Ny = 300, max_e
 
 
 
-	mandel_compute = serialPy
+	mandel_compute = serielPy.compute_mandelbrot
 	if(function == 2):
-		mandel_compute = vecPy
+		mandel_compute = vecPy.compute_mandelbrot
 	elif(function == 3):
-		mandel_compute = cyPy
+		mandel_compute = cyPy.compute_mandelbrot
 		
 
 	def inner_compute():
-		return mandel_compute(xmin,xmax,ymin,ymax,Nx,Ny,max_espate_time,plot_filename)
+		return mandel_compute(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time,plot_filename)
 	
 	return inner_compute
 
 
 if __name__ == "__main__":
 
-	pylab.imshow(image)
-	pylab.show()
-	print(args)
-	print(type(args.ymin))
-
-#print(args.accumulate(args.integers))
+    mandel = maker()
+    image = mandel()
+    print(image)
+    pylab.imshow(image,cmap = 'autumn')
+    pylab.show()
 
 

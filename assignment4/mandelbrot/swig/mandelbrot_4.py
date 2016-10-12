@@ -9,7 +9,6 @@ def compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time=1000,plot_filen
     array = np.zeros(Ny*Nx, dtype='int32', order='C')
 
 
-    image = cmandel.solver(array,xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time)
        
     return image
 
