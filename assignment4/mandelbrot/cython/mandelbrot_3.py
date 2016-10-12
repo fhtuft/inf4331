@@ -1,7 +1,7 @@
 import numpy as np
 import pylab
 import timeit
-import cython.mandelbrot_cython
+import mandelbrot.cython.mandelbrot_cython
 
 
 def compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time=1000,plot_filename=None):
