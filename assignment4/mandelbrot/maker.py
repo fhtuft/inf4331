@@ -11,7 +11,7 @@ import mandelbrot.cython.mandelbrot_3 as cyPy
 
 
 
-def maker(xim = -1.0,xmax = 1.0 , ymin = -1.0,ymax = 1.0,Nx = 300, Ny = 300, max_escape_time = 100, filename = None, function = 1): 
+def maker(xmin = -1.0,xmax = 1.0 , ymin = -1.0,ymax = 1.0,Nx = 300, Ny = 300, max_escape_time = 100, filename = None, function = 1): 
     
     parser = argparse.ArgumentParser(description='Process some integers.')
 
