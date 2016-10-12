@@ -1,5 +1,5 @@
-4.1 run 4_1.py
-4.2 run 4_2.py
+4.1 run 4_1.py or mandelbrot/serial/mandebrot_1.py
+4.2 run 4_2.py or mandelbrot/vector/mandelbrot_2.py
 4.3 run mandelbrot/cython/mandelbrot_3.py
 4.4 run mandelbrot/swig/mandelbrot_4.py
 4.5 4_5.py
