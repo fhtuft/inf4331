@@ -1,5 +1,0 @@
-cython no improvments Nx = 300, Ny = 300 escape_time = 1000
-0.0022753607481718063
-
-
-
