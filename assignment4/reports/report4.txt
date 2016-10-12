@@ -1,2 +1,10 @@
+Time of 4.1:
+0.0004698801785707474
+Time of 4.2:
+3.418559208512306e-05
+Time of cython:
+1.3513490557670593e-06
 Tid for swig
 0.00016873842105269432
+
+As i program c all day every day, this one swig was easyiest. Also there is some unsertenty regarding the run time. Should have used larger values, as i think swig my be the fastest. Some times gave negative values!
