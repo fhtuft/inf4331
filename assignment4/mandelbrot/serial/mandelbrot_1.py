@@ -22,8 +22,6 @@ def compute_mandelbrot(xmin,xmax,ymin,ymax,Nx,Ny,max_escape_time=1000,plot_filen
         for i in range(image.shape[1]):
             a,b = (0.0,0.0)
             x,y = (xes[i],yes[j])
-            #x,y = ( -1 + 4.0*float(i-Nx/2)/Nx,0 + 4.0*float(j-Ny/2)/Ny)
-            #print(x,y)
             while(a**2 + b**2 <= 4.0 and  image[j][i] < max_escape_time):
                 a,b = a**2 - b**2 + x, 2*a*b + y
                 image[j][i] += 1

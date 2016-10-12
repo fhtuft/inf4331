@@ -6,13 +6,13 @@ import timeit
 
 import mandelbrot.maker as mb
 
-print("4.3 cython code")
+print("4.5 user inteface, --help if you need help")
 
-solver = mb.maker(function = 3,max_escape_time=1000)  
-start = timeit.timeit()
+solver = mb.maker()  
+#start = timeit.timeit()
 image = solver()
-end = timeit.timeit()
-print(end - start)
+#end = timeit.timeit()
+
 pylab.imshow(image)
 pylab.show()
 
