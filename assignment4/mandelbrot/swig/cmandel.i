@@ -11,5 +11,5 @@
     import_array();
 %}
 
-%apply (int* INPLACE_ARRAY1, int DIM1){(int* array,int dim)}
+%apply (int DIM1,int* IN_ARRAY1){(int dim,int* array)};
 %include "cmandel.h"
