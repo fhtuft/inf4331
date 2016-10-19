@@ -1,0 +1,127 @@
+\documentclass[a4paper]{article}
+
+% Import some useful packages
+\usepackage[margin=0.5in]{geometry} % narrow margins
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+
+\title{Peer-review of assignment 4 for \textit{INF3331-fhtuft}}
+\author{Andreas Kemkers, andreafk, {akemkers@gmail.com} \\
+ 		Martin Pettersen, martipet, {martipet@student.matnat.uio.no} \\
+		Sunny Minh Nhut Ngo, snngo, {sunnyngo88@hotmail.com}}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\subsection{Goal}
+The review should provide feedback on the solution to the student. The main goal is to \emph{give constructive feedback and advice} on how to improve the solution. You, the peer-review team, can decide how you organise the peer-review work between you. 
+
+\subsection{Guidelines}\label{sec:general_review}
+For each (coding) exercise, one should review the following points:
+
+\begin{itemize}
+  \item Is the code \textbf{working as expected}? For non-internal functions (in particular for scripts that are run from the command-line), does the program handle invalid inputs sensibly?
+  \item Is the code \textbf{well documented}? Are there docstrings and are the useful?
+  \item Is the code written in \textbf{Pythonic way} \footnote{https://www.python.org/dev/peps/pep-0020/}? Is the code easy to read? Are the variable/class/function names sensible? Do you find overuse of classes or not sufficient use of functions or classes? Are there parts of the program that are hard to understand? 
+  \item Can you find \textbf{unnecessarily complicated parts} of the program? If so, suggest an improved implementation.
+  \item List the programming parts that are not answered.
+\end{itemize}
+Use (shortened) code snippets where appropriate to show how to improve the solution. 
+
+\subsection{Points}
+The review is completed by pushing the review Latex and PDF files to each of the reviewed repositories. The name of the files should be \emph{feedback.tex} and \emph{feedback.pdf}.
+
+You will get up to 10 points for delivering the peer-reviews. Each of you should contribute to the review roughly equivalently - your team will get the same number of points\footnote{In case a team-member does not contribute, please email \href{mailto:simon@simula.no}{simon@simula.no}}. 
+
+\subsection{Useful Latex snippets}
+Here are some sample usage of Latex.
+
+\subsubsection{Sample code}
+\begin{minted}[bgcolor=LightGray, linenos, fontsize=\footnotesize]{python}
+import sys
+print "This is a sample code"
+sys.exit(0)
+\end{minted}
+
+\subsubsection{Mathematical equation}
+\begin{align}
+2 \pi > 6
+\end{align}
+
+
+
+\section{Review \emph{- to be filled out}}\label{sec:review}
+
+Specify the system (Python version, operating system, ...) that was used for the review.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{General feedback}
+\begin{itemize}
+\item This was a bit advanced for us, but we have tried our best to follow what is going on. 
+\item Nice README.txt, this helped us understand where to find the scripts and how to run them.
+\item Missing comments, there is very little comments in all files.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.1: Python implementation}
+\begin{itemize}
+\item The code is working great and is easy and understandeble. We have no comments or suggestion as to improving this implementation.
+\item Again, comments would be nice!
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.2:  numpy implementation} \label{sec:assignment5.2}
+\begin{itemize}
+\item Again, this is working exactly as expected with a very big improvment over the pure python version.
+\item Very good and efficient use of vectorization!
+\item Again, comments would be nice!
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.3: Integrated C implementation}
+\begin{itemize}
+\item Working great and is very fast compared to numpy, great!
+\item Somewhat difficult to understand, and again comments could help clear this up.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.4:  An alternative integrated C implementation}
+We are all bachelor student and have no experience with swig, so it is difficult giving any feedback towards this.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.5: User interface}
+Add a review based on section \ref{sec:general_review}.
+\begin{itemize}
+\item The interface is very functional, but also not very intuitive.
+\item Some of the options did not seem to work properly, we could for example not get switching color schemes to work. (Also autumn was spelled differently in the menu and the code so this caused some confusion.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.6:  Packaging and unit tests}
+\begin{itemize}
+\item The packaging looks to be correct and is very well structured.
+\item The unit testing seems to work fine on the inside mandelbrot testing, but we can't seem to get a result from the outside mandelbrot testing.
+\item Slightly better commented this, but still far below expectations.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 4.7: More color scales + art contest}
+The colorswitching in 4.7 is working as expected and provides enough options.
+
+\subsection*{Assignment 4.8: Self replication}
+Works great! Exactly as expected.
+
+
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}
