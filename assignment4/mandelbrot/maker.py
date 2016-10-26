@@ -5,7 +5,7 @@ import pylab
 
 import mandelbrot.serial.mandelbrot_1 as serielPy
 import mandelbrot.vector.mandelbrot_2 as vecPy
-import mandelbrot.cython.mandelbrot_3 as cyPy
+#import mandelbrot.cython.mandelbrot_3 as cyPy #Comment in if wont cython
 
 
 
