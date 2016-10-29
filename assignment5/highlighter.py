@@ -1,9 +1,9 @@
 #!usr/bin/env python
-
 import re
 import sys
 
 assert  sys.version_info >= (3,0)
+
 
 
 def argParser():
@@ -17,6 +17,7 @@ def argParser():
     syntax = []
     for line in f.readlines():
         regex,token = line.split(": ")
+        regex = re.compile(regex)
         syntax.append((regex,token.rstrip('\n'))) #Get rid of newline        
     f.close()
     f = open(sys.argv[2],'r') #Theme file
@@ -29,33 +30,40 @@ def argParser():
     sourceFile = f.read()
     f.close()
     
-    return syntax,theme,sourceFile
-   
+    return syntax,theme,sourceFile 
+
 
 def lexer(syntex,string):
-
     pos = 0
-
     while pos < len(string):
-                
-        for pattern,token in syntex:
-            regex = re.compile("r"+pattern)
-            match = re.match(string,regex,pos)
+        for regex,token in syntex:
+            match = regex.match(string,pos)
             if match:
+                yield token,string[pos:match.end(0)]
                 pos = match.end(0)
-                yield token,string
-        
-        
+                break
+        #No match found
+        yield None,string[pos:pos+1]
+        pos += 1
  
+        
+if __name__ == "__main__":
     
-syntax,theme,sourceFile = argParser()
-print(syntax)
-print(theme)
-for i in lexer(None,None):
-    print(i)
+    syntax,theme,sourceFile = argParser()
+    #print(syntax)
+    #print(theme)
+    new_string = ""
+    for token,string in lexer(syntax,sourceFile):
+        if token:
+            colour = "\33["+theme[token] #Add escape seqence
+            new_string+= colour
+            new_string+= string
+            new_string+= "\033[00m" #Restore prev colour output 
+        else:
+            new_string+=string
     
+    print(new_string)    
 
-#print(sourceFile) 
         
 
 
