@@ -14,41 +14,49 @@ def makeLCS(X,Y):
     
     m,n = len(X),len(Y)
     
-    c = np.zeros(m+1,n+1)
-    b = np.array(m+1,n+1,dtype = 'c')
-    # b uses 3 chars 'V': Vertical, 'C' : Corner, 'H': Horizontal
+    c = np.zeros((m+1,n+1),dtype = int)
+    b = np.zeros((m,n),dtype = int)
+    class dirEnum:
+        VERTICAL   = 1
+        CORNER     = 2
+        HORIZONTAL = 3
 
-    class 
-
-    for i in range(1,c.dim[0]):#Do somethin about this index, prob wrong
-        for j in range(1,c.dim[1]):
+    for i in range(b.shape[0]):#Do somethin about this index, prob wrong
+        for j in range(b.shape[1]):
             i_c,j_c = i+1,j+1
-            if X[i] == Y[j]:  
+            if X[i] == Y[j]: 
+                #print("==") 
                 c[i_c][j_c] = c[i_c-1][j_c-1] + 1
-                b[i][j] = 'C'
+                b[i][j] = dirEnum.VERTICAL
             elif c[i_c-1][j_c] >= c[i_c][j_c-1]:
+                #print(">=")
                 c[i_c][j_c] = c[i_c-1][j_c]
-                b[i][j] = 'V'
+                b[i][j] = dirEnum.CORNER
             else:
-                b[i][j] = 'H'
-    
-        def getLCS(i,j):
-            if i == 0 or j == 0:
-                return 
-            if b[i][j] == 'C':
-                getLCS(i-1,j-1)
-                yield diffToken.SAME,X[i]
-            elif b[i][j] == 'V':
-                getLCS(i-1,j)
-                yield diffToken.SUB,X[i]
-            else:
-                getLCS(i,j-1)
-                yield diffToken.ADD,X[i]
+                #print("else")
+                b[i][j] = dirEnum.HORIZONTAL
+
+    print(c)
+    print(b)
+
+    i,j = m-1,n-1 
+    while( i != 0 and j != 0 ):
+        if b[i][j] == dirEnum.CORNER:
+            #print(X[i] + " corner")
+            yield diffToken.SAME,X[i]
+            i,j = i-1,j-1
+        elif b[i][j] == dirEnum.VERTICAL:
+            #print(X[i] + " vertical")
+            yield diffToken.SUB,X[i]
+            i,j  = i-1,j
+        else:
+            #print(Y[j] + " horizontal")
+            yield diffToken.ADD,Y[j]
+            i,j = i,j-1
         
-    return getLCS(m,n)     
  
 
-def parseArgs():
+def parsArgs():
     assert len(sys.argv) > 2     
    
     file1 = []
@@ -74,13 +82,13 @@ if __name__ == "__main__" :
     file1,file2 = parsArgs()
     
     # Make a lcs and print out the lcs/ses 
-    for toke,line in makeLCS(file1,file2):
+    for token,line in makeLCS(file1,file2):
         if token == diffToken.SAME: 
-            print("%s %s" %(diffToken.SAME,line))
-        elif token == diffToken.ADD
-            print("%s %s" %(diffToken.ADD,line))
+            print("%s %s" %(diffToken.SAME,line.rstrip('\n')))
+        elif token == diffToken.ADD:
+            print("%s %s" %(diffToken.ADD,line.rstrip('\n')))
         else: 
-            print("%s %s" %(diffToken.SUB,line))
+            print("%s %s" %(diffToken.SUB,line.rstrip('\n')))
             
     
     
