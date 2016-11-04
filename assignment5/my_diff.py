@@ -9,7 +9,7 @@ class diffToken:
     SUB  = "-" 
 
 # Implementation of longest common subsequence algorithm
-# returns a clousre generator that gives the lcs/ses
+# returns a generator
 def makeLCS(X,Y):
     
     m,n = len(X),len(Y)
@@ -23,36 +23,38 @@ def makeLCS(X,Y):
 
     for i in range(b.shape[0]):#Do somethin about this index, prob wrong
         for j in range(b.shape[1]):
-            i_c,j_c = i+1,j+1
+
+            ic,jc = i+1,j+1
             if X[i] == Y[j]: 
-                #print("==") 
-                c[i_c][j_c] = c[i_c-1][j_c-1] + 1
-                b[i][j] = dirEnum.VERTICAL
-            elif c[i_c-1][j_c] >= c[i_c][j_c-1]:
-                #print(">=")
-                c[i_c][j_c] = c[i_c-1][j_c]
+                print("== " + str(i) + ","+str(j)) 
+                c[ic][jc] = c[ic-1][jc-1] + 1
                 b[i][j] = dirEnum.CORNER
+            elif c[ic-1][jc] >= c[ic][jc-1]:
+                print(">= " + str(i) + "," + str(j))
+                c[ic][jc] = c[ic-1][ic]
+                b[i][j] = dirEnum.VERTICAL
             else:
-                #print("else")
+                print("else " + str(i) + "," + str(j))
+                c[ic][jc] = c[ic][jc-1]
                 b[i][j] = dirEnum.HORIZONTAL
 
     print(c)
     print(b)
 
-    i,j = m-1,n-1 
-    while( i != 0 and j != 0 ):
+    i,j = 0,0 
+    while( i < m and j < n ):
         if b[i][j] == dirEnum.CORNER:
             #print(X[i] + " corner")
             yield diffToken.SAME,X[i]
-            i,j = i-1,j-1
+            i,j = i+1,j+1
         elif b[i][j] == dirEnum.VERTICAL:
             #print(X[i] + " vertical")
             yield diffToken.SUB,X[i]
-            i,j  = i-1,j
+            i,j  = i+1,j
         else:
             #print(Y[j] + " horizontal")
             yield diffToken.ADD,Y[j]
-            i,j = i,j-1
+            i,j = i,j+1
         
  
 

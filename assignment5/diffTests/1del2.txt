@@ -1,0 +1,3 @@
+Test of deletion
+1. line
+3. line

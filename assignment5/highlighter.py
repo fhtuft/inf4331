@@ -7,9 +7,6 @@ assert  sys.version_info >= (3,0)
 
 
 def argParser():
-
-    if len(sys.argv) <= 3:
-        sys.exit()
     
     # Read and parse fileinput
     returnList =  []
@@ -42,13 +39,19 @@ def lexer(syntex,string):
                 yield token,string[pos:match.end(0)]
                 pos = match.end(0)
                 break
-        #No match found
+        #No match found 
         yield None,string[pos:pos+1]
         pos += 1
- 
+    
         
 if __name__ == "__main__":
+   
     
+    if len(sys.argv) <= 3:
+        print("Wrong number of args: regex, theme, source")
+        sys.exit()
+
+ 
     syntax,theme,sourceFile = argParser()
     #print(syntax)
     #print(theme)
