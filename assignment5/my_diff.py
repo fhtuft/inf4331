@@ -17,8 +17,8 @@ def makeLCS(X,Y):
     c = np.zeros((m+1,n+1),dtype = int)
     b = np.zeros((m,n),dtype = int)
     class dirEnum:
-        VERTICAL   = 1
-        CORNER     = 2
+        CORNER     = 1
+        VERTICAL   = 2
         HORIZONTAL = 3
 
     for i in range(b.shape[0]):#Do somethin about this index, prob wrong
@@ -41,6 +41,21 @@ def makeLCS(X,Y):
     print(c)
     print(b)
 
+    def getList(i,j):
+        if i < 0 or j < 0:
+            pass
+        if b[i][j] == dirEnum.CORNER:
+            getList(i-1,j-1)
+            yield diffToken.SAME,X[i]
+        elif b[i][j] == dirEnum.VERTICAL:
+            getList[i-1][j]
+            yield diffToken.SUB,X[i]
+        else:
+            getList[i][j-1]
+            yield diffToken.SUB,Y[j]
+            
+    return getList(m-1,n-1)
+''''
     i,j = 0,0 
     while( i < m and j < n ):
         if b[i][j] == dirEnum.CORNER:
@@ -56,7 +71,7 @@ def makeLCS(X,Y):
             yield diffToken.ADD,Y[j]
             i,j = i,j+1
         
- 
+ '''
 
 def parsArgs():
     assert len(sys.argv) > 2     
@@ -82,7 +97,8 @@ if __name__ == "__main__" :
 
     # Parse the args
     file1,file2 = parsArgs()
-    
+    makeLCS(file1,file2)   
+ 
     # Make a lcs and print out the lcs/ses 
     for token,line in makeLCS(file1,file2):
         if token == diffToken.SAME: 

@@ -1,0 +1,16 @@
+#.*: oneLineComment
+"""(.|[\n])*""": multiLineComment
+def[ \t]\w+: funcDef
+".*"|'.*': string
+import|from: import
+None|True|False: special
+for | in : forloop
+while: whileloop
+try|except : tryExcept
+if|else|elif: ifelseBlock
+pass: passStmt
+ as : assStmt
+@.*: decorator
+==|!=|=<|=>|<|>: compOp
++=|-=|*=|@=|/=|%=|&=||=|^=|<<=|>>=|**=|//=: augassign
+=: assignment
