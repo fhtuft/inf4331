@@ -13,7 +13,8 @@ class diffToken:
 def makeLCS(X,Y):
     
     m,n = len(X),len(Y)
-    
+   
+    print("m%d n%d" %(m,n)) 
     c = np.zeros((m+1,n+1),dtype = int)
     b = np.zeros((m,n),dtype = int)
     class dirEnum:
@@ -31,7 +32,7 @@ def makeLCS(X,Y):
                 b[i][j] = dirEnum.CORNER
             elif c[ic-1][jc] >= c[ic][jc-1]:
                 print(">= " + str(i) + "," + str(j))
-                c[ic][jc] = c[ic-1][ic]
+                c[ic][jc] = c[ic-1][jc]
                 b[i][j] = dirEnum.VERTICAL
             else:
                 print("else " + str(i) + "," + str(j))
@@ -41,20 +42,39 @@ def makeLCS(X,Y):
     print(c)
     print(b)
 
-    def getList(i,j):
-        if i < 0 or j < 0:
-            pass
+
+    i,j = m-1,n-1
+    lines,tokens = [],[]
+    while(i >= 0 and j >= 0):
+        
         if b[i][j] == dirEnum.CORNER:
-            getList(i-1,j-1)
-            yield diffToken.SAME,X[i]
+            tokens.insert(0,diffToken.SAME)
+            lines.insert(0,X[i])
+            i,j = i-1,j-1
         elif b[i][j] == dirEnum.VERTICAL:
-            getList[i-1][j]
-            yield diffToken.SUB,X[i]
+            tokens.insert(0,diffToken.SUB)
+            lines.insert(0,X[i])
+            i = i-1
         else:
-            getList[i][j-1]
-            yield diffToken.SUB,Y[j]
-            
-    return getList(m-1,n-1)
+            tokens.insert(0,diffToken.ADD)
+            lines.insert(0,Y[j])
+            j = j-1
+     
+    return tokens,lines  
+    #def getList(i,j):
+    #    if i < 0 or j < 0:
+    #        pass
+    #    if b[i][j] == dirEnum.CORNER:
+    #        getList(i-1,j-1)
+    #        yield diffToken.SAME,X[i]
+    #    elif b[i][j] == dirEnum.VERTICAL:
+    #        getList[i-1][j]
+    #        yield diffToken.SUB,X[i]
+    #    else:
+    #        getList[i][j-1]
+    #        yield diffToken.SUB,Y[j]
+     
+    #return getList(m-1,n-1)
 ''''
     i,j = 0,0 
     while( i < m and j < n ):
@@ -97,17 +117,21 @@ if __name__ == "__main__" :
 
     # Parse the args
     file1,file2 = parsArgs()
-    makeLCS(file1,file2)   
- 
+    
+    #gt = makeLCS(file1,file2)   
+    
+    #for token,line in gt:
+    #    print(line) 
+
     # Make a lcs and print out the lcs/ses 
-    for token,line in makeLCS(file1,file2):
+    tokens,lines = makeLCS(file1,file2)
+    for token,line in zip(tokens,lines):
         if token == diffToken.SAME: 
             print("%s %s" %(diffToken.SAME,line.rstrip('\n')))
         elif token == diffToken.ADD:
             print("%s %s" %(diffToken.ADD,line.rstrip('\n')))
         else: 
             print("%s %s" %(diffToken.SUB,line.rstrip('\n')))
-            
     
     
     
