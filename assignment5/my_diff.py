@@ -14,7 +14,7 @@ def makeLCS(X,Y):
     
     m,n = len(X),len(Y)
    
-    print("m%d n%d" %(m,n)) 
+    #print("m%d n%d" %(m,n)) 
     c = np.zeros((m+1,n+1),dtype = int)
     b = np.zeros((m,n),dtype = int)
     class dirEnum:
@@ -27,20 +27,20 @@ def makeLCS(X,Y):
 
             ic,jc = i+1,j+1
             if X[i] == Y[j]: 
-                print("== " + str(i) + ","+str(j)) 
+                #print("== " + str(i) + ","+str(j)) 
                 c[ic][jc] = c[ic-1][jc-1] + 1
                 b[i][j] = dirEnum.CORNER
             elif c[ic-1][jc] >= c[ic][jc-1]:
-                print(">= " + str(i) + "," + str(j))
+                #print(">= " + str(i) + "," + str(j))
                 c[ic][jc] = c[ic-1][jc]
                 b[i][j] = dirEnum.VERTICAL
             else:
-                print("else " + str(i) + "," + str(j))
+                #print("else " + str(i) + "," + str(j))
                 c[ic][jc] = c[ic][jc-1]
                 b[i][j] = dirEnum.HORIZONTAL
 
-    print(c)
-    print(b)
+    #print(c)
+    #print(b)
 
 
     i,j = m-1,n-1
