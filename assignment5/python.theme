@@ -14,3 +14,4 @@
 01;31m: compOp
 01;31m: augassign
 01;33m: assignment
+01;36m: digit

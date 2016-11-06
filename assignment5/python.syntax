@@ -1,15 +1,16 @@
 #.*: oneLineComment
 """(.|[\n])*""": multiLineComment
-def[ \t]\w+: funcDef
+\bdef[ \t]\w+: funcDef
 ".*"|'.*': string
-import|from: import
-None|True|False: special
-for | in : forloop
-while: whileloop
-try|except : tryExcept
-if|else|elif: ifelseBlock
-pass: passStmt
- as : assStmt
+\bimport\b|\bfrom\b: import
+\bNone\b|\bTrue\b|\bFalse\b: special
+\bfor\b|\bin\b: forloop
+\bwhile\b: whileloop
+\btry\b|\bexcept\b: tryExcept
+\bif\b|\belse\b|\belif\b: ifelseBlock
+\bpass\b: passStmt
+\bas\b: assStmt
 @.*: decorator
 ==|!=|=<|=>|<|>: compOp
- = : assignment
+=: assignment
+\d+: digit

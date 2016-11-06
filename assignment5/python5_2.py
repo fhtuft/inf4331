@@ -27,13 +27,30 @@ var1 = 1
 #Decorator
 @decorator
 
+#trye except
+try:
+    print("stuff")
+except:
+    pass
 
 
 
+#For loop
 for line in lines:
     pass
 
+#While loop
 while False:
     pass
 
+#elfi
+if True:
+    pass
+elif False:
+    pass
+else:
+    pass
 
+
+1 == 1
+1 < 2

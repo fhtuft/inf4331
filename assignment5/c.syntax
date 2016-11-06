@@ -2,11 +2,11 @@
 /\*(.|[\n])*\*/: multiLineComment
 ".*": string
 #\s*include\s+((<.*>)|(".*")): include
-int\s|long\s+int\s|long\s|char\s|short\s|float\s|double\s|unsigned\s: types
+\bint\b|long\s+int\b|\blong\b|\bchar\b|\bshort\b|\bfloat\b|\bdouble\b|\bunsigned\b: types
 \d+: digit
-#define\s+\w*\s+: macro
-while: while
-for: for
-if|else\s+if|else: ifelse
-goto|(([a-z][A-Z])+): goto
+#define\s+\w*\b: macro
+\bwhile\b: while
+\bfor\b: for
+\bif\b|\belse\s+if\b|\belse\b: ifelse
+\bgoto\b: goto
 \+\+|-|\+|\*|/: stuff
