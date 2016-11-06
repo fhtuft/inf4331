@@ -1,0 +1,12 @@
+01;34m: oneLineComment
+01;35m: multiLineComment
+01;34m: string
+01;36m: include
+01;33m: types
+01;31m: digit
+01;34m: macro
+01;34m: while
+01;34m: for
+01;34m: ifelse
+01;34m: goto
+01;32m: stuff

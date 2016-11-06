@@ -1,0 +1,16 @@
+01;34m: oneLineComment
+01;35m: multiLineComment
+01;31m: funcDef
+01;35m: string
+01;35m: import
+01;36m: special
+01;31m: forloop
+01;31m: whileloop
+01;31m: tryExcept
+01;31m: ifelseBlock
+01;31m: passStmt
+01;31m: assStmt
+01;31m: decorator
+01;31m: compOp
+01;31m: augassign
+01;33m: assignment
