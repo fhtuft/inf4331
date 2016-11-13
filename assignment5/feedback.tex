@@ -1,0 +1,118 @@
+\documentclass[a4paper]{article}
+
+% Import some useful packages
+\usepackage[margin=0.5in]{geometry} % narrow margins
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+
+\title{Peer-review of assignment 5 for \textit{INF3331-fhtuft-master}}
+\author{Reviewer 1, krimha, {mail@uio.no} \\
+ 		Reviewer 2, pierreyp, {mail@uio.no} \\
+		Reviewer 3, tnbildst, {mail@uio.no}}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\subsection{Goal}
+The review should provide feedback on the solution to the student. The main goal is to \emph{give constructive feedback and advice} on how to improve the solution. You, the peer-review team, can decide how you organise the peer-review work between you. 
+
+\subsection{Guidelines}\label{sec:general_review}
+For each (coding) exercise, one should review the following points:
+
+\begin{itemize}
+  \item Is the code \textbf{working as expected}? For non-internal functions (in particular for scripts that are run from the command-line), does the program handle invalid inputs sensibly?
+  \item Is the code \textbf{well documented}? Are there docstrings and are the useful?
+  \item Is the code written in \textbf{Pythonic way} \footnote{https://www.python.org/dev/peps/pep-0020/}? Is the code easy to read? Are the variable/class/function names sensible? Do you find overuse of classes or not sufficient use of functions or classes? Are there parts of the program that are hard to understand? 
+  \item Can you find \textbf{unnecessarily complicated parts} of the program? If so, suggest an improved implementation.
+  \item List the programming parts that are not answered.
+\end{itemize}
+Use (shortened) code snippets where appropriate to show how to improve the solution. 
+
+\subsection{Points}
+The review is completed by pushing the review Latex and PDF files to each of the reviewed repositories. The name of the files should be \emph{feedback.tex} and \emph{feedback.pdf}.
+
+You will get up to 10 points for delivering the peer-reviews. Each of you should contribute to the review roughly equivalently - your team will get the same number of points\footnote{In case a team-member does not contribute, please email \href{mailto:simon@simula.no}{simon@simula.no}}. 
+
+\subsection{Useful Latex snippets}
+Here are some sample usage of Latex.
+
+\subsubsection{Sample code}
+\begin{minted}[bgcolor=LightGray, linenos, fontsize=\footnotesize]{python}
+import sys
+print "This is a sample code"
+sys.exit(0)
+\end{minted}
+
+\subsubsection{Mathematical equation}
+\begin{align}
+2 \pi > 6
+\end{align}
+
+
+
+\section{Review \emph{- to be filled out}}\label{sec:review}
+
+System (Python version 2.7, Windows 7) 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{General feedback}
+Everything looks great and worked fine. Great job! There wasn't really alot for me to comment on, as I found everything to be working perfectly. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.1: Syntax highlighting}
+\begin{itemize}
+\item The code seems to be working fine, with handling for no arguments as well, which is nice. 
+\item I like that you've also been commenting the code nicely, and following the "pythonic" way of writing code. 
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.2: Python syntax} \label{sec:assignment5.2}
+\begin{itemize}
+\item Nothing to comment on really. The python syntax worked and looks quite nice. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.3: Syntax for your favorite language}
+Language: C
+\begin{itemize}
+\item Many variables implemented in the theme, which is cool.
+\item The theme works and looks nice - nothing to comment on. 
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.4: Syntax for your second favorite language}
+Language: Java
+\begin{itemize}
+\item Many variables implemented in the theme, which is cool.
+\item The theme works, looks nice and is different from the one in task 5.3 - nothing to comment on.  
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.5: superdiff}
+\begin{itemize}
+\item The program runs as intended, with no errors. 
+\item I like how you distinct between additions, deletion, permutation etc. in the print, making it easy to read.
+\item Good commenting in mydiff. The code is easily read, and follows the "pythonic" way of writing code, which is nice. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.6:  Coloring diff}
+\begin{itemize}
+\item The highlighting is correct, as stated in the task - with greens for additions, red for deletion and the no coloring. The code runs with no errors. 
+\item Again, great distinctions in the print.
+\end{itemize}
+ 
+
+
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}
