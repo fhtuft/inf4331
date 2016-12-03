@@ -13,12 +13,12 @@
 <form action="draw_temp" method="POST">
     Month
     <br>
-    <select>
+    <select name="month">
         <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
         <option value="April">April</option>
-        <option value="May">May</option>
+        <option value="May" selected>May</option>
         <option value="June">June</option>
         <option value="July">July</option>
         <option value="August">August</option>
@@ -31,24 +31,23 @@
     <br>
     Time range start:
     <br>
-    <input type="text" name="timeStart">
+    <input type="text" name="timeStart" value="1826">
     <br>
      Time range end:
     <br>
-    <input type="text" name="timeEnd">
+    <input type="text" name="timeEnd" value="1900">
     <br>
 
     Y-Axis min
     <br>
-    <input type="password" name="yMin">
+    <input type="text" name="yMin" value="0">
     <br>
     Y-Axis max
     <br>
-    <input type="password" name="yMax">
+    <input type="text" name="yMax" value="30">
     <br>
-
-
     <input type="submit" value="Submit">
+    <br>
 </form>
 
 </body>
