@@ -1,0 +1,55 @@
+<html>
+
+    <!-- The head tag contains header information about the HTML document. -->
+  <head>
+    <title>This is a title</title>
+  </head>
+
+
+  <body>
+  <img src="data:image/png;base64,{{ image }}" width="500">
+
+
+<form action="draw_temp" method="POST">
+    Month
+    <br>
+    <select>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+        
+    </select> 
+    <br>
+    Time range start:
+    <br>
+    <input type="text" name="timeStart">
+    <br>
+     Time range end:
+    <br>
+    <input type="text" name="timeEnd">
+    <br>
+
+    Y-Axis min
+    <br>
+    <input type="password" name="yMin">
+    <br>
+    Y-Axis max
+    <br>
+    <input type="password" name="yMax">
+    <br>
+
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

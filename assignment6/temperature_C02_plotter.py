@@ -1,65 +1,121 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
+_data_dir = 'assignment6_files/'
 
-def url_reader(url):
-    from urllib import request as urlreq
-    import sys   
 
-    text = None
-    try: 
-            f = urlreq.urlopen(url) #Or somthing with whene
-            text = f.readlines()
-    except:
-        sys.stderr.write("URL bady: " + url + "\n")
-    finally:
-        if f:
-            f.close()
+def _plot_me(func,func_id):
+    def ploting_me_temp(month,start_time,end_time,y_min,y_max):
+        fig = func(month,start_time,end_time,y_min,y_max)
+        plt.show()
+
+    def ploting_me_co2(start_time,end_time,y_min,y_max):    
+        fig = func(start_time,end_time,y_min,y_max)
+        plt.show()
+
+    if(func_id == 'temp'):
+        ploting_me_temp.data = func.data
+        return ploting_me_temp    
+    elif(func_id == 'co2'):
+        ploting_me_co2.data = func.data
+        return ploting_me_co2
+    else:
+        assert False 
+       
+
+
+def plot_co2_country(min_co2,max_co2,year = '2013'):
+    """Plots the temperatur
+        Args:
+            month: the month
+            start_time: the time to start
+            end_time: the time to end
+            y_min: min value y
+            y_max: max value y
+    """
+    data = plot_co2_country.data
+    co2 = data[year]
+    selector = (co2 <= max_co2) & (co2 >= min_co2)
+    country = data["Country Name"][selector].values
+    y_pos = np.arange(len(country))
+    co2 = co2[selector].values
+    fig = plt.figure()
+    ax = fig.add_subplot(111) 
+    ax.bar(y_pos,co2)
+    #axes = plt.gca() #http://stackoverflow.com/questions/3777861/setting-y-axis-limit-in-matplotlib
+    plt.xticks(y_pos,country)
+    #ax.ylabel("CO2")
+    #ax.set_ylim(y_min,y_max)
+    #plt.show()   
+    #return fig
+
+plot_co2_country.data = pd.read_csv(_data_dir + 'CO2_by_country.csv')
     
-    return text
 
 
+#@_plot_me_temp
+def plot_temperature(month,start_time, end_time,y_min,y_max):
+    """Plots the temperatur
+        Args:
+            month: the month
+            start_time: the time to start
+            end_time: the time to end
+            y_min: min value y
+            y_max: max value y
+    """
+    data = plot_temperature.data
+    year = data["Year"]
+    selector = (year <= end_time) & (year >= start_time)
+    year = year[selector].values
+    temp = data[month][selector].values
+    fig = plt.figure()
+    ax = fig.add_subplot(111) 
+    ax.plot(year,temp)
+    #axes = plt.gca() #http://stackoverflow.com/questions/3777861/setting-y-axis-limit-in-matplotlib
+    ax.set_ylim(y_min,y_max)
+    #plt.show()   
+    #return fig
 
+#Make the  data from file available to function plot_temperature
+plot_temperature.data = pd.read_csv(_data_dir + 'temperature.csv')
 
-def file_reader(fileName):
-    assert fileName.endswith('.csv')
-    import csv
-    import sqlite3
-
-    with open(fileName,'rb') as f:
-        conn = sqlite3.connect(':memory:')
-        conn.isolation_level = None
-        cur = conn.cursor()
-        reader = csv.reader(f)  
-        return reader.readLines()
     
-    return None  
-    
+
+def plot_CO2(start_time, end_time,y_min,y_max):
+    """Plots CO2
+        Args:
+            start_time: the time to start
+            end_time: the time to end
+            y_min: min value y
+            y_max: max value y
+    """
+    data = plot_CO2.data
+    year = data["Year"]
+    selector = (year <= end_time) & (year >= start_time)
+    year = year[selector].values
+    co2 = data['Carbon'][selector].values
+    fig = plt.figure()
+    ax = fig.add_subplot(111) 
+    ax.plot(year,co2)
+    #axes = plt.gca() #http://stackoverflow.com/questions/3777861/setting-y-axis-limit-in-matplotlib
+    ax.set_ylim(y_min,y_max)
+    #plt.show()   
+ 
+
+plot_CO2.data = pd.read_csv(_data_dir+ 'co2.csv')
+
+
+
 
 
 if __name__ == '__main__':
-    import sqlite3
-    
-    conn = sqlite3.connect(':memory:')
-    conn.isolation_level = None    
- 
-    cur = conn.cursor()
-    cur.execute("CREATE TABLE temp(year INT,jan FLOAT,feb FLOAT, mar FLOAT,apr FLOAT, may FLOAT,jun FLOAT,jul FLOAT,aug FLOAT,sep FLOAT,okt FLOAT,nov FLOAT,dec FLOAT)")    
-    cur.execute("INSERT INTO temp VALUES(1900,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0)");
-    cur.execute("INSERT INTO temp VALUES(1901,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0)");
-    cur.execute("INSERT INTO temp VALUES(1902,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0)");
 
-    file1 = "./assignment6_files/co2.csv"
+    plot_temperature = _plot_me(plot_temperature,'temp')
+    plot_CO2 = _plot_me(plot_CO2,'co2')
 
-    reader = file_reader(file1)
-
-    for lines in reader:
-        print(lines)
-
-    url = "http://berkeleyearth.lbl.gov/regions/contiguous-united-states"   
-
-    '''url_data = url_reader(url)
-    if url_data:
-        print(type(url_data))
-        print(url_data)
-    '''
-    conn.close()
+    plot_co2_country(15.0,20.0,'2013')
+    plt.show()
+    #plot_temperature("May",1816,1900,0,30)
+    #plot_CO2(1816,1900,0,1000)  
