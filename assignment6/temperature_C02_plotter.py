@@ -54,6 +54,10 @@ def plot_co2_country(min_co2,max_co2,year = '2013'):
     ax = fig.add_subplot(111) 
     ax.bar(y_pos,co2)
     plt.xticks(y_pos,country)
+    plt.title("CO2  per country")
+    plt.xlabel("Countrys")
+    plt.ylabel("CO2 ") 
+
 
 plot_co2_country.data = pd.read_csv(_data_dir + 'CO2_by_country.csv')
     
@@ -78,6 +82,10 @@ def plot_temperature(month,start_time, end_time,y_min,y_max):
     ax = fig.add_subplot(111) 
     ax.plot(year,temp)
     ax.set_ylim(y_min,y_max)
+    plt.title("Average temperature per year for " + month)
+    plt.xlabel("Years")
+    plt.ylabel("Average temperature ") 
+
 
 #Make the  data from file available to function plot_temperature
 plot_temperature.data = pd.read_csv(_data_dir + 'temperature.csv')
@@ -102,7 +110,9 @@ def plot_CO2(start_time, end_time,y_min,y_max):
     ax = fig.add_subplot(111) 
     ax.plot(year,co2)
     ax.set_ylim(y_min,y_max)
- 
+    plt.title("CO2  per year")
+    plt.xlabel("Years")
+    plt.ylabel("CO2 ") 
 
 plot_CO2.data = pd.read_csv(_data_dir+ 'co2.csv')
 

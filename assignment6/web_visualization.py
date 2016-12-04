@@ -13,7 +13,7 @@ def temperatur():
     img = io.BytesIO()
    
     month = 'May'
-    time_start = 1826
+    time_start = 1827
     time_end = 1900
     y_min = 0.0
     y_max = 30.0
@@ -29,14 +29,14 @@ def temperatur():
 
         
   
-    plot_temperature("May",1816,1900,0,30)
+    plot_temperature(month,time_start,time_end,y_min,y_max)
 
     plt.savefig(img,format='png')
     img.seek(0)
 
     img64base = base64.b64encode(img.getvalue()).decode('ascii')
 
-    return render_template('image_temp.html',image = img64base) 
+    return render_template('image_temp.html',image = img64base,start_data = str(time_start),end_data = str(time_end),yMin = str(y_min),yMax = str(y_max)) 
 
 
 @app.route("/CO2",methods=['GET','POST'])
@@ -46,10 +46,10 @@ def co2():
     
     img = io.BytesIO()
 
-    time_start = 1826
+    time_start = 1828
     time_end = 1900
     y_min = 0.0
-    y_max = 30.0
+    y_max = 1000.0
 
 
 
@@ -69,7 +69,7 @@ def co2():
 
     img64base = base64.b64encode(img.getvalue()).decode('ascii')
 
-    return render_template('image_co2.html',image = img64base) 
+    return render_template('image_co2.html',image = img64base,start_data = str(time_start),end_data = str(time_end),yMin = str(y_min),yMax = str(y_max)) 
 
 @app.route("/CO2_country",methods = ['GET','POST'])
 def co2_country():
@@ -95,7 +95,7 @@ def co2_country():
 
     img64base = base64.b64encode(img.getvalue()).decode('ascii')
 
-    return render_template('image_co2C.html',image = img64base) 
+    return render_template('image_co2C.html',image = img64base,minCO2 = str(min_co2),maxCO2 = str(max_co2) ) 
 
 @app.route("/help")
 def help_func():
