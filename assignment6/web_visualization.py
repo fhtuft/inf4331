@@ -78,8 +78,8 @@ def co2_country():
     
     img = io.BytesIO()
     
-    min_co2 = 15.0
-    max_co2 = 20.0
+    min_co2 = 25.0
+    max_co2 = 100.0 
     
 
     if(request.method == 'POST'):  

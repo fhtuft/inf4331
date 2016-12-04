@@ -67,11 +67,11 @@ def plot_temperature(month,start_time, end_time,y_min,y_max):
     """
         Plots the temperatur
         Args:
-            month: the month
-            start_time: the time to start
-            end_time: the time to end
-            y_min: min value y
-            y_max: max value y
+            month: the month to plot temperature from
+            start_time: year to start ploting
+            end_time: year to end ploting
+            y_min: minimum value for temperatur so show in plot
+            y_max: maximum value for temperatur so show in plot
     """
     data = plot_temperature.data
     year = data["Year"]
@@ -96,10 +96,10 @@ def plot_CO2(start_time, end_time,y_min,y_max):
     """
         Plots CO2
         Args:
-            start_time: the time to start
-            end_time: the time to end
-            y_min: min value y
-            y_max: max value y
+            start_time: year to start ploting from
+            end_time: year to end ploting from
+            y_min: min value of co2 to show
+            y_max: max value of co2 to show
     """
     data = plot_CO2.data
     year = data["Year"]
